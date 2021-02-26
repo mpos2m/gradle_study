@@ -122,13 +122,14 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	public int updateEmployee(Employee employee) {
 		String sql = "update employee set empname =?, title = ?, manager=?,salary=?, dept=? where empno = ?";
 		try (Connection con = JdbcUtil.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql)) {
-			pstmt.setInt(1, employee.getEmpNo());
-			pstmt.setString(2, employee.getEmpName());
-			pstmt.setInt(3, employee.gettNo().gettNo());
-			pstmt.setInt(4, employee.getManager().getEmpNo());
-			pstmt.setInt(5, employee.getSalary());
-			pstmt.setInt(6, employee.getDept().getDeptNo());
-
+			
+			pstmt.setString(1, employee.getEmpName());
+			pstmt.setInt(2, employee.gettNo().gettNo());
+			pstmt.setInt(3, employee.getManager().getEmpNo());
+			pstmt.setInt(4, employee.getSalary());
+			pstmt.setInt(5, employee.getDept().getDeptNo());
+			pstmt.setInt(6, employee.getEmpNo());
+			
 			return pstmt.executeUpdate();
 
 		} catch (SQLException e) {
